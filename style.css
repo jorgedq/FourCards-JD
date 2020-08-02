@@ -1,3 +1,6 @@
+/*************************************/
+/*            Globals                */
+/*************************************/
 *,
 *::after,
 *::before {
@@ -12,8 +15,8 @@
   --orange: hsl(34, 97%, 64%);
   --blue: hsl(212, 86%, 64%);
   /* Neutral Colors */
-  --very_dark_blue: hsl(234, 12%, 34%);
-  --grayish_blue: hsl(229, 6%, 66%);
+  --very_dark_blue: #4c4e61;
+  --grayish_blue: #a3a5ae;
   --very_light_gray: hsl(0, 0%, 98%);
   /*font family*/
   --font_family: "Poppins", sans-serif;
@@ -22,188 +25,144 @@
   --w_400: 400;
   --w_600: 600;
 }
-.w200 {
-  font-weight: 200;
-}
-.w400 {
-  font-weight: 400;
-}
-.w600 {
-  font-weight: 600;
-}
+/*----- Body ------*/
 body {
   font-family: var(--font_family);
   background-color: var(--very_light_gray);
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 0.3fr 1fr 0.1fr;
-  grid-gap: 0.5em;
-  grid-template-areas:
-    "header"
-    "main"
-    "footer";
+
   font-size: 16px;
 }
-/* header */
+body > * {
+  margin: 3em 2.5em;
+}
+/*----- Header ------*/
 header {
-  grid-area: header;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.header-title {
-  font-size: 1.8rem;
   text-align: center;
 }
-.header-title-2 {
-  text-align: center;
-  font-size: 1.9em;
+header h1 {
+  font-size: 1.45em;
+  font-weight: 200;
+  color: #5d5d5f;
+  margin-bottom: 0.2em;
 }
-.header-message {
-  margin: 1em 0;
+header h2 {
+  color: var(--very_dark_blue);
+  margin-bottom: 0.5em;
+}
+header p {
   font-size: 0.9em;
-  text-align: center;
+  color: var(--grayish_blue);
 }
-/* end header */
-/* main */
+/*----- main ------*/
 main {
-  grid-area: main;
   display: grid;
-  grid-gap: 0.5em;
-  grid-template-columns: 1fr 0.7fr 1fr;
-  grid-template-rows: repeat(1, auto);
-  grid-template-areas: "section1   section2   section3";
-}
-.section-1,
-.section-3 {
-  display: flex;
-  align-items: center;
-}
-.section-1 {
-  grid-area: section1;
-  justify-content: end;
-}
-.section-3 {
-  grid-area: section3;
-}
-article {
-  border-radius: 5px;
-  box-shadow: 0px 4px 4px 4px var(--grayish_blue),
-    0px 1px 1px 1px var(--very_dark_blue);
-  max-width: 20em;
-  /* margin: 0.5em; */
+  grid-template-columns: 1fr;
 }
 
-.imagen {
-  display: flex;
-  padding: 0.9em;
-  justify-content: end;
+main section {
 }
-.container {
+/*----- cards ------*/
+section .card {
   padding: 1.2em;
+  margin-bottom: 2em;
+  border-radius: 0.4em;
+  position: relative;
+  background: #fff;
 }
-.section-2 {
-  grid-area: section2;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+section .card::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 100%;
+  border-radius: 0.6em;
+  background: var(--grayish_blue);
+  width: 100%;
+  filter: blur(3.5px);
+  z-index: -1;
 }
-.section-2 article:nth-child(1) {
-  margin-bottom: 1em;
-}
-.section-3 {
-  display: flex;
-  align-items: center;
-}
-.section-1 article .card-color {
+section .card::before {
+  content: "";
+  height: 0.3em;
+  position: absolute;
   border-radius: 5px 5px 0 0;
-  background-color: var(--cyan);
-  height: 0.5em;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
 }
-.section-2 article:nth-child(1) .card-color {
-  border-radius: 5px 5px 0 0;
-  background-color: var(--red);
-  height: 0.5em;
+.cyan::before {
+  background: var(--cyan);
 }
-.section-2 article:nth-child(2) .card-color {
-  border-radius: 5px 5px 0 0;
-  background-color: var(--orange);
-  height: 0.5em;
+.red::before {
+  background: var(--red);
 }
-.section-3 article .card-color {
-  border-radius: 5px 5px 0 0;
-  background-color: var(--blue);
-  height: 0.5em;
+.orange::before {
+  background: var(--orange);
 }
-/* end main */
-/* footer */
-footer {
-  grid-area: footer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.blue::before {
+  background: var(--blue);
 }
-/* end footer */
-
-/*responsive css*/
-
+.card .card-title {
+  font-size: 1.1em;
+  color: var(--very_dark_blue);
+  font-weight: 600;
+}
+.card .card-body {
+  color: var(--grayish_blue);
+  font-size: 0.9em;
+}
+.card .card-image {
+  text-align: right;
+  margin: 1em 0;
+}
 /* Small devices (landscape phones, 576px and up) */
-@media (max-width: 576px) {
-  body {
-    font-size: 50px;
+@media screen and (min-width: 576px) and (min-width: 768px) and (min-width: 992px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  header p {
+    max-width: 496px;
+  }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  body > * {
+    margin: 1.8em 2.5em;
+    max-width: 1440px;
+  }
+  header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  header p {
+    max-width: 496px;
   }
   main {
-    grid-template-areas:
-      "section1   section1   section1"
-      "section2   section2   section2"
-      "section3   section3   section3";
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  .section-1,
-  .section-3 {
-    flex-direction: row;
+  section {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
   }
-  article {
-    margin: 1.5em 0;
-    max-width: 80%;
-    width: 80%;
+  section .card {
+    margin-bottom: 0;
+    max-width: 350px;
   }
-}
-/* reponsive css */
-@media (max-width: 768px) {
-  body {
-    font-size: 11px;
-    grid-template-rows: 0.2fr 1fr 0.1fr;
+  .section-2 .card:nth-child(1) {
+    margin-bottom: 1em;
   }
-  main {
-    grid-template-areas:
-      "section1   section1   section1"
-      "section2   section2   section2"
-      "section3   section3   section3";
+  .section-1 {
+    align-items: flex-end;
   }
-  .section-1,
   .section-3 {
-    flex-direction: row;
-    justify-content: center;
-  }
-  article {
-    margin: 1.5em 0;
-    max-width: 80%;
-    width: 80%;
+    align-items: flex-start;
   }
 }
-
-@media (max-width: 992px) {
-  body {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 1200px) {
-  body {
-    font-size: 14px;
-  }
-}
-/* end responsive css */
