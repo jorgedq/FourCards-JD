@@ -153,11 +153,6 @@ main {
       "article1 article2 article4"
       "article1 article3 article4";
   }
-  article {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   .card {
     max-width: 350px;
     margin-bottom: 0;
