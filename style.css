@@ -163,8 +163,8 @@ main {
     margin-bottom: 0;
   }
   .article1 {
-    justify-content: end;
     grid-area: article1;
+    justify-content: flex-end;
   }
   .article2 {
     grid-area: article2;
@@ -173,7 +173,7 @@ main {
     grid-area: article3;
   }
   .article4 {
-    justify-content: start;
+    justify-content: flex-start;
     grid-area: article4;
   }
 }
